@@ -1,0 +1,50 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Appointment {
+  id          Int       @id @default(autoincrement())
+  clientName  String
+  date        DateTime
+  status      String    @default("pending")
+  createdAt   DateTime  @default(now())
+  
+  // Relación 1:1 con Pago
+  payment     Payment?
+}
+
+model Payment {
+  id            Int         @id @default(autoincrement())
+  amount        Decimal     @db.Decimal(10, 2)
+  method        String
+  createdAt     DateTime    @default(now())
+  
+  appointmentId Int         @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id])
+}
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  slug        String    @unique
+  products    Product[]
+  createdAt   DateTime  @default(now())
+}
+
+model Product {
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String?
+  presentation String
+  price        Decimal  @db.Decimal(10, 2)
+  stock        Int      @default(0)
+  imageUrl     String?
+  categoryId   Int
+  category     Category @relation(fields: [categoryId], references: [id])
+  createdAt    DateTime @default(now())
+}
