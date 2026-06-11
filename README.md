@@ -1,54 +1,220 @@
 # 🛢️ Sistema de Gestión - LubriCenter
 
-Proyecto desarrollado para la cátedra **Metodología de Sistemas I** (Ing. Ruth Diaz Alberti).
-Este sistema integral permite la gestión de catálogo, control de stock y reserva de turnos para un lubricentro.
+Sistema integral para la administración de un lubricentro, desarrollado como proyecto académico para la cátedra **Metodología de Sistemas I**.
 
-## 👥 Equipo de Desarrollo
+Permite gestionar productos, controlar el stock disponible y administrar reservas de turnos mediante una interfaz intuitiva y una API REST escalable.
 
-- Agustín Francisco Delgado Ojeda
-- Nico
-- Franco
+---
+
+## 👨‍💻 Desarrolladores
+
+* **Francisco Delgado**
+* **Oriana Gordillo**
+
+---
+
+## 📋 Funcionalidades
+
+### 🛒 Gestión de Productos
+
+* Alta, baja y modificación de productos.
+* Visualización completa del catálogo.
+* Organización por categorías.
+
+### 📦 Control de Stock
+
+* Registro y actualización de existencias.
+* Control de disponibilidad de productos.
+* Gestión eficiente del inventario.
+
+### 📅 Gestión de Turnos
+
+* Reserva de turnos para servicios.
+* Consulta de disponibilidad.
+* Administración de reservas.
+
+### 🔐 Arquitectura Escalable
+
+* API REST desarrollada con Express.
+* Persistencia de datos mediante Prisma ORM.
+* Base de datos MySQL.
+
+---
 
 ## 🏗️ Arquitectura del Proyecto
 
-El proyecto está estructurado como un **Monorepo**, dividiendo la lógica de negocio y la interfaz de usuario en dos directorios principales:
+El proyecto sigue una arquitectura **Monorepo**, separando claramente el backend y el frontend.
 
-- `/backend`: API RESTful construida con Node.js, Express y Prisma (ORM). Base de datos MySQL.
-- `/frontend`: Interfaz de usuario responsiva construida con HTML5, CSS3, JavaScript Vanilla y Bootstrap 5.
+```text
+LubriCenter/
+│
+├── backend/
+│   ├── prisma/
+│   ├── routes/
+│   ├── controllers/
+│   ├── middleware/
+│   └── index.js
+│
+├── frontend/
+│   ├── css/
+│   ├── js/
+│   ├── assets/
+│   └── index.html
+│
+└── README.md
+```
 
-## 🚀 Guía de Instalación y Ejecución Local
+### Backend
 
-Para levantar este proyecto en tu computadora, asegurate de tener instalados **Node.js** y **XAMPP** (con MySQL).
+Tecnologías utilizadas:
 
-### 1. Configuración de la Base de Datos
+* Node.js
+* Express.js
+* Prisma ORM
+* MySQL
 
-Primero, iniciá **MySQL** desde el panel de XAMPP y creá una base de datos vacía llamada `sistema_lubricentro`.
+### Frontend
 
-Luego, cloná este repositorio, abrí la terminal en la carpeta `/backend` e instalá las dependencias:
+Tecnologías utilizadas:
+
+* HTML5
+* CSS3
+* JavaScript (Vanilla)
+* Bootstrap 5
+
+---
+
+## 🚀 Instalación y Ejecución
+
+### Requisitos Previos
+
+Antes de comenzar, asegurate de tener instalado:
+
+* Node.js
+* XAMPP (MySQL)
+* Git
+
+---
+
+### 1️⃣ Clonar el repositorio
+
+```bash
+git clone https://github.com/tu-usuario/lubricenter.git
+cd lubricenter
+```
+
+---
+
+### 2️⃣ Configurar la Base de Datos
+
+Iniciar MySQL desde XAMPP y crear una base de datos vacía llamada:
+
+```sql
+sistema_lubricentro
+```
+
+Ingresar al directorio backend:
+
+```bash
+cd backend
+```
+
+Instalar dependencias:
 
 ```bash
 npm install
-Por último, sincronizá el esquema de Prisma y poblá la base de datos con el catálogo inicial:
-
-Bash
-npx prisma db push
-node prisma/seed.js
-2. Iniciar el Servidor (Backend)
-Dentro de la carpeta /backend, ejecutá el siguiente comando:
-
-Bash
-node index.js
-El servidor quedará escuchando en http://localhost:3000.
-
-3. Iniciar la Interfaz (Frontend)
-Con el backend en ejecución, abrí el archivo /frontend/index.html directamente en tu navegador o utilizando la extensión Live Server de VS Code.
-
-🌿 Flujo de Trabajo (Git Flow)
-Para mantener el historial limpio y evitar conflictos de código, respetaremos el siguiente esquema de ramas:
-
-main: Rama protegida. Solo contiene código estable y funcional (producción).
-
-developer: Rama de integración. Todo el código nuevo llega acá antes de pasar a main.
-
-Ramas de funcionalidad (feature/*): Para cada tarea nueva, crear una rama a partir de developer.
 ```
+
+Sincronizar Prisma con la base de datos:
+
+```bash
+npx prisma db push
+```
+
+Cargar datos iniciales:
+
+```bash
+node prisma/seed.js
+```
+
+---
+
+### 3️⃣ Iniciar el Backend
+
+Desde la carpeta backend:
+
+```bash
+node index.js
+```
+
+Servidor disponible en:
+
+```text
+http://localhost:3000
+```
+
+---
+
+### 4️⃣ Iniciar el Frontend
+
+Abrir:
+
+```text
+/frontend/index.html
+```
+
+o ejecutar mediante la extensión **Live Server** de Visual Studio Code.
+
+---
+
+## 🌿 Flujo de Trabajo Git
+
+Para mantener una correcta organización del proyecto se utilizará una estrategia basada en Git Flow.
+
+### Ramas principales
+
+| Rama      | Descripción                                   |
+| --------- | --------------------------------------------- |
+| main      | Versión estable del proyecto                  |
+| developer | Rama de integración de nuevas funcionalidades |
+
+### Ramas de funcionalidad
+
+```text
+feature/nombre-funcionalidad
+```
+
+Crear una nueva rama:
+
+```bash
+git checkout developer
+git pull origin developer
+git checkout -b feature/nombre-funcionalidad
+```
+
+Una vez finalizada la tarea:
+
+```bash
+git add .
+git commit -m "feat: descripción de la funcionalidad"
+git push origin feature/nombre-funcionalidad
+```
+
+Posteriormente se realizará la revisión correspondiente antes de integrarla a `developer`.
+
+---
+
+## 📚 Metodología de Desarrollo
+
+Este proyecto se desarrolla aplicando conceptos de:
+
+* Ingeniería de Software
+* Scrum
+* Git Flow
+* Metodología de Sistemas I
+
+---
+
+## 📄 Licencia
+
+Proyecto desarrollado con fines académicos para la carrera de Ingeniería en Sistemas.
