@@ -125,3 +125,35 @@ body {
 .info-section {
   background: linear-gradient(to right, var(--dark-blue), var(--primary));
 }
+/* ========================================== */
+/* ESTILOS PARA EL CARRUSEL                   */
+/* ========================================== */
+
+/* Limita el alto máximo del carrusel para que no ocupe toda la pantalla */
+.custom-carousel {
+    max-height: 400px;
+    background-color: #1a1a1a; /* Fondo oscuro por si la imagen tarda en cargar */
+}
+
+/* Fuerza a que las imágenes se adapten correctamente al contenedor sin deformarse */
+.carousel-img {
+    height: 400px;
+    object-fit: cover; /* Recorta la imagen proporcionalmente para rellenar el espacio */
+    object-position: center;
+}
+
+/* Mejora la lectura del texto arriba de las fotos */
+.custom-caption {
+    background: rgba(0, 0, 0, 0.6); /* Capa negra semitransparente */
+    border-radius: 10px;
+    padding: 15px 20px;
+    bottom: 30px;
+}
+
+/* Efecto responsive: achica un poco el alto en celulares */
+@media (max-width: 768px) {
+    .custom-carousel,
+    .carousel-img {
+        height: 250px;
+    }
+}
