@@ -25,11 +25,16 @@ async function cargarAceites() {
     contador.textContent = `${productos.length} productos encontrados`;
 
     productos.forEach((producto) => {
+      // Evaluamos si hay una URL de imagen; si no, ponemos el ícono de gota
+      const imagenVisual = producto.imageUrl
+        ? `<img src="${producto.imageUrl}" alt="${producto.name}" class="img-fluid" style="max-height: 180px; object-fit: contain;">`
+        : `<i class="bi bi-droplet-fill text-secondary" style="font-size: 3rem; opacity: 0.3;"></i>`;
+
       const cardHtml = `
                 <div class="col">
                     <div class="card h-100 bg-white product-card text-center pb-3 border-0 shadow-sm">
-                        <div class="product-image-container mb-3 position-relative bg-light" style="height: 200px;">
-                            <i class="bi bi-droplet-fill text-secondary" style="font-size: 3rem; opacity: 0.3;"></i>
+                        <div class="product-image-container mb-3 position-relative bg-light d-flex justify-content-center align-items-center" style="height: 200px;">
+                            ${imagenVisual}
                             <span class="badge ${producto.stock > 15 ? "bg-success" : "bg-warning text-dark"} position-absolute top-0 end-0 m-2">
                                 Stock: ${producto.stock}
                             </span>

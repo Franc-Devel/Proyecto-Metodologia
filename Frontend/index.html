@@ -54,9 +54,43 @@
               <a class="nav-link px-3" href="./pages/turnos.html">Turnos</a>
             </li>
           </ul>
-          <div class="d-flex text-white fs-5 gap-3">
-            <i class="bi bi-search cursor-pointer"></i>
-            <i class="bi bi-person-circle cursor-pointer"></i>
+          <div class="d-flex text-white fs-5 gap-3 align-items-center">
+            <div class="dropdown">
+              <i
+                class="bi bi-search cursor-pointer"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <div
+                class="dropdown-menu dropdown-menu-end p-2 shadow-sm"
+                style="width: 250px"
+              >
+                <form id="form-buscador" class="d-flex m-0">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm me-2 bg-light border-0"
+                    id="input-buscador"
+                    placeholder="Buscar producto..."
+                    required
+                  />
+                  <button type="submit" class="btn custom-btn btn-sm fw-bold">
+                    Ir
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <i
+                class="bi bi-person-circle cursor-pointer"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></i>
+              <ul
+                class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2"
+                id="menu-usuario"
+              ></ul>
+            </div>
           </div>
         </div>
       </div>
@@ -105,45 +139,93 @@
     </section>
 
     <section class="container mt-5">
-      <div id="carouselDestacados" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
-        
+      <div
+        id="carouselDestacados"
+        class="carousel slide shadow rounded overflow-hidden"
+        data-bs-ride="carousel"
+      >
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselDestacados" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselDestacados" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselDestacados" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button
+            type="button"
+            data-bs-target="#carouselDestacados"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselDestacados"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselDestacados"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
         </div>
 
         <div class="carousel-inner custom-carousel">
           <div class="carousel-item active" data-bs-interval="4000">
-            <img src="./img/banner-promo1.jpg" class="d-block w-100 carousel-img" alt="Promoción de Aceites">
+            <img
+              src="./assets/img/images.jpg"
+              class="d-block w-100 carousel-img"
+              alt="Promoción de Aceites"
+            />
             <div class="carousel-caption d-none d-md-block custom-caption">
               <h5 class="fw-bold text-uppercase">Cambio de Aceite Premium</h5>
               <p>Filtro bonificado con tu servicio de alineación y balanceo.</p>
             </div>
           </div>
-          
+
           <div class="carousel-item" data-bs-interval="4000">
-            <img src="./img/banner-promo2.jpg" class="d-block w-100 carousel-img" alt="Marcas de Filtros">
+            <img
+              src="./img/banner-promo2.jpg"
+              class="d-block w-100 carousel-img"
+              alt="Marcas de Filtros"
+            />
             <div class="carousel-caption d-none d-md-block custom-caption">
               <h5 class="fw-bold text-uppercase">Las Mejores Marcas</h5>
-              <p>Trabajamos con lubricantes oficiales que garantizan la vida de tu motor.</p>
+              <p>
+                Trabajamos con lubricantes oficiales que garantizan la vida de
+                tu motor.
+              </p>
             </div>
           </div>
-          
+
           <div class="carousel-item" data-bs-interval="4000">
-            <img src="./img/banner-promo3.jpg" class="d-block w-100 carousel-img" alt="Atención en Taller">
+            <img
+              src="./img/banner-promo3.jpg"
+              class="d-block w-100 carousel-img"
+              alt="Atención en Taller"
+            />
             <div class="carousel-caption d-none d-md-block custom-caption">
               <h5 class="fw-bold text-uppercase">Agendá tu Turno Online</h5>
-              <p>Evitá demoras y reservá tu lugar desde nuestra sección de turnos.</p>
+              <p>
+                Evitá demoras y reservá tu lugar desde nuestra sección de
+                turnos.
+              </p>
             </div>
           </div>
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestacados" data-bs-slide="prev">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselDestacados"
+          data-bs-slide="prev"
+        >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Anterior</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselDestacados" data-bs-slide="next">
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselDestacados"
+          data-bs-slide="next"
+        >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Siguiente</span>
         </button>
@@ -224,6 +306,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/navbar.js"></script>
     <script src="./js/app.js"></script>
   </body>
 </html>

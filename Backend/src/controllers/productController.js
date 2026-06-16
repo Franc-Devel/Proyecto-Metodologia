@@ -1,12 +1,15 @@
 import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+
+// Inyectamos la URL directamente para cumplir con el estándar moderno
+const prisma = new PrismaClient({
+  datasourceUrl: process.env.DATABASE_URL,
+});
 
 export const getProducts = async (req, res, next) => {
   try {
     const { categoria } = req.query;
     let whereClause = {};
 
-    // Si el frontend envía la categoría, armamos el filtro
     if (categoria) {
       whereClause = {
         category: {
@@ -15,11 +18,10 @@ export const getProducts = async (req, res, next) => {
       };
     }
 
-    // Buscamos los productos en la base de datos
     const products = await prisma.product.findMany({
       where: whereClause,
       include: {
-        category: true, // Incluye la información de la categoría asociada
+        category: true,
       },
     });
 

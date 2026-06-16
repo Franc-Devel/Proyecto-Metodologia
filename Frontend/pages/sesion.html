@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reserva de Turnos | LubriCenter</title>
+    <title>Iniciar Sesión | LubriCenter</title>
 
     <meta
       name="description"
-      content="Reservá tu turno para el cambio de aceite y filtros de tu vehículo en LubriCenter."
+      content="Ingresá a tu cuenta de LubriCenter para gestionar tus turnos y compras."
     />
-    <meta name="author" content="Agustin Francisco Delgado Ojeda" />
     <meta name="theme-color" content="#4f46e5" />
 
     <link
@@ -26,6 +25,7 @@
     <div class="bg-dark text-white text-end py-1 px-4 small d-none d-md-block">
       Atención al cliente: 0800-LUBRI-CENTER | Envíos a todo el país
     </div>
+
     <nav class="navbar navbar-expand-lg navbar-dark shadow-sm custom-navbar">
       <div class="container">
         <a class="navbar-brand fw-bold fs-4" href="../index.html">
@@ -45,13 +45,13 @@
               <a class="nav-link px-3" href="../index.html">Catálogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" href="./aceites.html">Aceites</a>
+              <a class="nav-link px-3" href="aceites.html">Aceites</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3" href="./filtros.html">Filtros</a>
+              <a class="nav-link px-3" href="filtros.html">Filtros</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active px-3" href="turnos.html">Turnos</a>
+              <a class="nav-link px-3" href="turnos.html">Turnos</a>
             </li>
           </ul>
           <div class="d-flex text-white fs-5 gap-3 align-items-center">
@@ -103,99 +103,85 @@
       "
     >
       <div class="container text-center">
-        <h2 class="fw-bold mb-0 text-uppercase">Reserva de Turnos</h2>
+        <h2 class="fw-bold mb-0 text-uppercase">Iniciar Sesión</h2>
         <p class="mt-2 text-white-50">
-          Programá el mantenimiento de tu vehículo de forma rápida y sencilla.
+          Accedé a tu panel para ver tus turnos y el estado de tu vehículo.
         </p>
       </div>
     </div>
 
     <main class="container mt-5 mb-5">
       <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-5 col-md-7">
           <div class="card border-0 shadow-sm p-4 p-md-5">
-            <h4 class="fw-bold text-dark mb-4 border-bottom pb-3">
-              <i class="bi bi-calendar-check me-2 custom-text-primary"></i>Datos
-              del Turno
-            </h4>
+            <div class="text-center mb-4">
+              <i
+                class="bi bi-person-circle custom-text-primary"
+                style="font-size: 4rem"
+              ></i>
+            </div>
 
-            <form id="form-turno">
-              <div class="row mb-3">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <label
-                    for="clientName"
-                    class="form-label small fw-bold text-muted text-uppercase"
-                    >Nombre Completo</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control bg-light border-0"
-                    id="clientName"
-                    placeholder="Ej: Juan Pérez"
-                    required
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label
-                    for="dominio"
-                    class="form-label small fw-bold text-muted text-uppercase"
-                    >Patente del Vehículo</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control bg-light border-0"
-                    id="dominio"
-                    placeholder="Ej: AB 123 CD"
-                    required
-                  />
-                </div>
+            <form id="form-login">
+              <div class="mb-3">
+                <label
+                  for="email"
+                  class="form-label small fw-bold text-muted text-uppercase"
+                  >Correo Electrónico</label
+                >
+                <input
+                  type="email"
+                  class="form-control bg-light border-0 py-2"
+                  id="email"
+                  placeholder="ejemplo@correo.com"
+                  required
+                />
               </div>
 
-              <div class="row mb-4">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <label
-                    for="date"
-                    class="form-label small fw-bold text-muted text-uppercase"
-                    >Fecha y Hora</label
-                  >
-                  <input
-                    type="datetime-local"
-                    class="form-control bg-light border-0"
-                    id="date"
-                    required
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label
-                    for="service"
-                    class="form-label small fw-bold text-muted text-uppercase"
-                    >Tipo de Servicio</label
-                  >
-                  <select
-                    class="form-select bg-light border-0"
-                    id="service"
-                    required
-                  >
-                    <option value="" selected disabled>
-                      Seleccioná un servicio...
-                    </option>
-                    <option value="cambio_aceite">Cambio de Aceite</option>
-                    <option value="cambio_filtros">Cambio de Filtros</option>
-                    <option value="service_completo">Service Completo</option>
-                  </select>
-                </div>
+              <div class="mb-2">
+                <label
+                  for="password"
+                  class="form-label small fw-bold text-muted text-uppercase"
+                  >Contraseña</label
+                >
+                <input
+                  type="password"
+                  class="form-control bg-light border-0 py-2"
+                  id="password"
+                  placeholder="Ingresá tu contraseña"
+                  required
+                />
               </div>
 
-              <div id="alerta-turno" class="alert d-none" role="alert"></div>
+              <div class="text-end mb-4">
+                <a
+                  href="#"
+                  class="small custom-text-primary text-decoration-none"
+                >
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
 
-              <div class="text-end mt-4 pt-3 border-top">
+              <div id="alerta-login" class="alert d-none" role="alert"></div>
+
+              <div class="mt-2">
                 <button
                   type="submit"
-                  class="btn custom-btn px-5 py-2 fw-bold text-uppercase rounded-pill shadow-sm"
+                  class="btn custom-btn w-100 py-2 fw-bold text-uppercase rounded-pill shadow-sm"
                   id="btn-submit"
                 >
-                  Confirmar Reserva
+                  Ingresar
                 </button>
+              </div>
+
+              <div class="text-center mt-4 pt-3 border-top">
+                <span class="small text-muted"
+                  >¿No tenés una cuenta?
+                  <a
+                    href="registro.html"
+                    class="fw-bold custom-text-primary text-decoration-none"
+                    >Registrate acá</a
+                  ></span
+                >
               </div>
             </form>
           </div>
@@ -203,10 +189,27 @@
       </div>
     </main>
 
-    <footer class="bg-dark text-white pt-5 pb-3">
+    <footer class="bg-dark text-white pt-5 pb-3 mt-auto">
       <div class="container text-center text-md-start">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <h5 class="fw-bold text-uppercase mb-3 custom-text-accent">
+              LubriCenter
+            </h5>
+            <p class="small text-secondary">Tu motor en las mejores manos.</p>
+          </div>
+          <div class="col-md-4 mb-4 text-md-end offset-md-4">
+            <h5 class="fw-bold text-uppercase mb-3">Seguinos</h5>
+            <div class="fs-4 d-flex justify-content-md-end gap-3">
+              <i class="bi bi-facebook cursor-pointer"></i>
+              <i class="bi bi-instagram cursor-pointer"></i>
+              <i class="bi bi-linkedin cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+        <hr class="border-secondary" />
         <div class="text-center small text-secondary mt-3">
-          &copy; 2026 LubriCenter - Desarrollado por Agustin F. Delgado Ojeda.
+          &copy; 2026 LubriCenter.
         </div>
       </div>
     </footer>

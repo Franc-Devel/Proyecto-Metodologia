@@ -8,14 +8,56 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ==========================================
+// ROLES DEL SISTEMA
+// ==========================================
+enum Role {
+  CLIENT
+  ADMIN
+  MECHANIC
+}
+
+// ==========================================
+// USUARIOS Y AUTENTICACIÓN
+// ==========================================
+model User {
+  id                   Int           @id @default(autoincrement())
+  email                String        @unique
+  password             String
+  name                 String
+  phone                String?       @unique
+  vehicleModel         String?   
+  role                 Role          @default(CLIENT)
+  
+  isEmailVerified      Boolean       @default(false)
+  isPhoneVerified      Boolean       @default(false)
+  verificationToken    String?
+  resetPasswordToken   String?
+  resetPasswordExpires DateTime?
+  
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  // Relación: Un usuario puede tener muchos turnos en su historial
+  appointments         Appointment[]
+}
+
+// ==========================================
+// TURNOS Y PAGOS
+// ==========================================
 model Appointment {
   id          Int       @id @default(autoincrement())
-  clientName  String
+  
+  // Relación con el Usuario registrado
+  userId      Int?
+  user        User?     @relation(fields: [userId], references: [id])
+  
+  clientName  String    // Lo mantenemos por si necesitan agendar a alguien manualmente en el local
+  vehiclePlate String?
   date        DateTime
   status      String    @default("pending")
   createdAt   DateTime  @default(now())
   
-  // Relación 1:1 con Pago
   payment     Payment?
 }
 
@@ -28,6 +70,10 @@ model Payment {
   appointmentId Int         @unique
   appointment   Appointment @relation(fields: [appointmentId], references: [id])
 }
+
+// ==========================================
+// CATÁLOGO DE PRODUCTOS
+// ==========================================
 model Category {
   id          Int       @id @default(autoincrement())
   name        String

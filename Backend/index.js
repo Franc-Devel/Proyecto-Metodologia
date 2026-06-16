@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import authRoutes from "./src/routes/auth.routes.js";
 
 // Importación de rutas
 import productRoutes from "./src/routes/product.routes.js";
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use("/api", productRoutes);
 app.use("/api", appointmentRoutes);
 app.use("/api", paymentRoutes);
+app.use("/api", authRoutes);
 
 // Ruta base de comprobación
 app.get("/", (req, res) => {
